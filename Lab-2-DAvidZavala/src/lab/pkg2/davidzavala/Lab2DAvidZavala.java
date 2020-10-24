@@ -48,11 +48,23 @@ public class Lab2DAvidZavala {
                                 break;
                             }
                             case 'b': {
+                                Print(ADet);
+                                System.out.print("Elija el detective a Eliminar: ");
+                                int det = read.nextInt();
+                                Detective Detectibe = null;
+                                if (det < 0 || det > ADet.size()) {
+                                    System.out.println("Detective inexistente");
+                                    System.out.println("Intentelo nuevamente");
+                                    Print(ADet);
+                                    System.out.print("Elija el detective a Cargo: ");
+                                    det = read.nextInt();
+                                }
+                                ADet.remove(ADet.get(det));
                                 break;
                             }
                             case 'c': {
                                 Print(ADet);
-                                System.out.print("Elija el detective a Cargo: ");
+                                System.out.print("Elija el detective a modificar: ");
                                 int det = read.nextInt();
                                 Detective Detectibe = null;
                                 if (det < 0 || det > ADet.size()) {
@@ -101,18 +113,28 @@ public class Lab2DAvidZavala {
 
                             switch (op) {
                                 case 'a': {
+                                    ACas.add(CrearCas());
                                     break;
                                 }
                                 case 'b': {
+                                    Print(ACas);
+                                    System.out.print("Elija el CAso a modificar: ");
+                                    int oop = read.nextInt();
+                                    if (oop <= ACas.size() && oop <= 0) {
+                                        ModCas(ACas.get(oop));
+                                    }
                                     break;
                                 }
                                 case 'c': {
+                                    Print(ACas);
                                     break;
                                 }
                                 case 'd': {
+                                    PrintR(ACas);
                                     break;
                                 }
                                 case 'e': {
+                                    Printp(ACas);
                                     break;
                                 }
                                 case 'x': {
@@ -195,9 +217,7 @@ public class Lab2DAvidZavala {
         for (int i = 0; i < casostemp.size(); i++) {
             if (casostemp.get(i).getTipo().toLowerCase().equals("homicidio")) {
                 for (int j = 0; j < ADet.size(); j++) {
-                    if (ADet.get(j).getNivel()) {
-
-                    }
+                    
                 }
             } else if (casostemp.get(i).getTipo().toLowerCase().equals("robo")) {
 
@@ -331,6 +351,25 @@ public class Lab2DAvidZavala {
     static void Print(ArrayList Array) {
         for (int i = 0; i < Array.size(); i++) {
             System.out.println("{" + i + "} [" + Array.get(i) + "]");
+
+        }
+    }
+
+    static void Printp(ArrayList<Caso> Array) {
+        for (int i = 0; i < Array.size(); i++) {
+            
+            if (Array.get(i).getEstado().toLowerCase().equals("en prFoceso")) {
+            System.out.println("{" + i + "} [" + Array.get(i) + "]");
+            }
+
+        }
+    }
+    static void PrintR(ArrayList<Caso> Array) {
+        for (int i = 0; i < Array.size(); i++) {
+            
+            if (Array.get(i).getEstado().toLowerCase().equals("resuelto")) {
+            System.out.println("{" + i + "} [" + Array.get(i) + "]");
+            }
 
         }
     }
